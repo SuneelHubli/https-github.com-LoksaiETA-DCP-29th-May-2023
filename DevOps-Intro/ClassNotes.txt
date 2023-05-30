@@ -1,0 +1,307 @@
+DCP - 29th May 2023
+
+###############
+Day 1
+29th May 2023
+###############
+
+		Introduction to DevOps!
+		What is DevOps >>>> ???
+		
+		SDLC - Software Development Lifecycle		
+			
+			Software Application ::::
+			
+			Software :::
+				Application Software 
+									
+					Desktop Applications 
+					Web Applications
+					Mobile Applications
+					
+					
+				System Software 
+				
+				Desktop Applications 
+				Web Applications
+				Mobile Applications
+				
+			Requirement Analysis
+			Design Docs
+			Coding 
+			Testing
+			Implementation/Deployment
+			Monitoring/Maintain
+				
+		Waterfall	---> Linear Fashion. == We can't accomodate the changing business needs frequently
+
+			Requirement Analysis
+			Design Docs
+			Coding 
+			Testing
+			Implementation/Deployment
+			Monitoring/Maintain
+
+			Requirement Analysis
+			Design Docs
+			Coding 
+			Testing
+			Implementation/Deployment
+			Monitoring/Maintain
+
+			
+		Agile Methodologies	--> The Application is splitted into various Modules/Iterations.
+		
+		Iteration 1:		Developer1 
+			Requirement Analysis
+			Design Docs
+			Coding 
+			Testing
+			Implementation/Deployment
+			Monitoring/Maintain	
+		
+		Iteration 2:
+			Requirement Analysis
+			Design Docs
+			Coding 
+			Testing
+			Implementation/Deployment
+			Monitoring/Maintain	
+
+		Iteration 3:					test -- qa & UAT ====> Prod. 
+			Requirement Analysis
+			Design Docs
+			Coding 
+			Testing
+			Implementation/Deployment
+			Monitoring/Maintain	
+			
+		Contiuously develop the code / Integrate the code for testing / Delivery the application to prod.
+		
+		DevOps ---> Is a Software Development Strategy.
+		
+		
+		
+		
+		
+		
+		
+		
+Retail Domain --> E_Commerce 
+Tele-Comm Domain...	
+
+	SP1 --> Release a new offer. --> 
+	SP2 --> 		
+		
+		DevOps ---> Is a Software Development Strategy.
+		
+		
+	Teams Involved ::: in SDLC Process !
+	
+		Development
+		Testing
+		Operations/Infra.
+		Design 
+		Business Analyst
+		PMO
+		Release Mgmt. Team 
+		Solution Archi.
+		Monitoring Team
+		
+		
+		Infra-Structure Team  		Provision Infra-Structure / Environments
+										shell scripts / Manually ==> Terraform / Ansible 
+		Development Team			Coding & Development 
+										IDE, GIT, Build and code integration
+		Testing Team 				Test applications developed by Dev Team
+		Release Management Team		Ensure timely release of product.
+		Monitoring Team 			Prod. Monitoring		
+		Security Team				Ensure the product is developed and deployed as per security policies
+		
+		
+		DevOps Team ????
+		
+			Development 		Monitoring. 
+			
+		Stages of DevOps :::
+		
+			Continuous Development	
+						***Coding as per Design
+							IDEs,GIT,Jenkins,Build Tools like Maven 
+						
+							Code Build --> Compile and Create Artifacts(Binaries- *.war/*.jar)
+							Promote these artifacts to Test Environment 
+							Manually Notify Testing Teams Thru Emails 
+						
+			Continuous Integration
+							Promote these artifacts to Test Environment 
+								Jenkins, application Servers
+			
+			Continuous Testing 
+							Automated Testing Tools - Junit,TestNG,Selenium --> Jenkins
+							
+			Continuous Delivery / Deployment	==> Process of releasing the products to Production envi. -> Ansible - Jenkins - docker & kubernetes
+				
+				Continuous Delivery	
+						This requires Manual Approval for Prod. Release 
+			
+				Continuous Deployment
+						This does not require any Manual Approval for Prod. Release
+						
+			Continuous Monitoring
+						This is to monitor the Infra & application. --> Prometheus, Grafana, Dynatrace...
+
+		Application Architecture :::
+		
+			Monolith Architecture 
+				- Are tightly coupled 
+				Here the product is deployed as a full application.
+			
+			Micro Service Based Architecture	
+				Loosely Coupled == > 
+				The application id deployed as a service.
+				
+				
+www.amazon.com :::
+
+	User_Registration-SignUp	--> Developer1 --> coding --> Testing --> Should able to Deploy to Prod. without impacting others
+	SignIn
+	Search_Products
+	Add to Cart
+	Place Order
+	Payment
+	Confirm
+	Track
+
+
+
+
+Eg.: 			
+Continuous Delivery :
+	banking services ---> ---> Non-Business Hrs.
+		
+Eg.: 			
+Continuous Deployment :			Without any application downtime.  - Matured level of DevOps.
+		amazon.com
+		Netflix	
+		facebook	
+		
+		
+
+
+###############
+Day 2
+30th May 2023
+###############
+		
+		DevOps ::::
+		Lab Access 
+		Class notes
+		
+		Environments ::
+		
+		Non-Prod Environment										Production Environment
+		
+		Dev Envi.	(src.code)			--> create src code -- unit test
+		Build Envi.	(*.war/Docker Image)
+		Test Envi.
+			QA 	- Quality Assurance Testing
+			UAT - User Acceptance Testing	=======>					Prod. Envi.		
+			Pre-Prod/Staging 				=======>					Prod. Envi.
+		
+		
+		
+		
+		Developers Workload :::		
+		
+			New Project 
+			
+			Enhancement project
+			Bugfixing 
+			
+			
+		DevOps :::
+		
+			People 		
+						
+				Infra-Structure Team  		Provision Infra-Structure / Environments
+												shell scripts / Manually ==> Terraform / Ansible 
+												Provisioning/Creating the Server ==> Terraform 
+												Configuration Management Tools	 ==> Ansible
+												
+				Development Team			Coding & Development 
+												IDE, GIT, Build and code integration
+				Testing Team 				Test applications developed by Dev Team
+				Release Management Team		Ensure timely release of product.
+				Monitoring Team 			Prod. Monitoring		
+				Security Team				Ensure the product is developed and deployed as per security policies
+		
+			Process :::
+			
+				Define the Process / Strategies		
+			
+			
+			Tools :::
+			
+				DevOps Tools like Terraform / Ansible 
+				
+				
+	Onboarding Application to DevOps ::::
+	
+		1. Assessment ==> 
+			Generate Assessment Report 
+			Tools 
+			
+		2. Project ==>  
+		
+		
+	DevOps Tools :::
+	
+	
+		Open-Source DevOps Tools 
+		
+			Jenkins,git,docker,kubernetes,terraform,ansible,......
+		
+		Managed Services
+		
+			From Cloud service providers ==> 
+			
+			
+		DevOps Lifecycle :::
+		
+			Plan ===> ALM Tool  -- Application LifeCycle Management Tool
+									Jira / Az Boards 
+									
+									
+		Scripting Language :
+		
+			shell Scripting , groovy(jenkins), yaml(docker,ansible,kubernetes,gitlab-ci,az-pipelines), python
+			
+			
+		GIT 		--> Source Code Management
+		Docker		--> Containerization
+		Kubernetes	--> Container Orchestration Tool
+		Ansible		--> Configuration Management
+		Terraform	--> IAC tools --> Server/Infra Provisioning 
+		Prometheus/Grafana	--> Monitoring 
+		
+		Jenkins		--> Build Orchestration Tool 
+		
+		
+	
+	LAB Access ::::
+		
+		1. Cloud Platform 
+		
+			AWS --> cloud to create the Virtual Machines 
+			- Create AWS Free Tier Account - 12 months.
+			- Launch AWS Resources VMs to work on DevOps Tools.
+			
+	Class notes ::::
+	
+		1. Create Github Account :: https://github.com/
+		
+		
+		
+		
+	
