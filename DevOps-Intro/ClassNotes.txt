@@ -301,6 +301,11 @@ Day 2
 	
 		1. Create Github Account :: https://github.com/
 		
+		2. AWS Free tier account :: 
+				valid email_id
+				phone number
+				valid Credit/Debit Card ==> Should be enabled with International Transaction.
+		
 		
 		
 		
