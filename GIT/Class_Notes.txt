@@ -1,0 +1,515 @@
+DCP - 29th May 2023
+
+###############
+Day 1
+29th May 2023
+###############
+
+		Introduction to DevOps!
+		What is DevOps >>>> ???
+		
+		SDLC - Software Development Lifecycle		
+			
+			Software Application ::::
+			
+			Software :::
+				Application Software 
+									
+					Desktop Applications 
+					Web Applications
+					Mobile Applications
+					
+					
+				System Software 
+				
+				Desktop Applications 
+				Web Applications
+				Mobile Applications
+				
+			Requirement Analysis
+			Design Docs
+			Coding 
+			Testing
+			Implementation/Deployment
+			Monitoring/Maintain
+				
+		Waterfall	---> Linear Fashion. == We can't accomodate the changing business needs frequently
+
+			Requirement Analysis
+			Design Docs
+			Coding 
+			Testing
+			Implementation/Deployment
+			Monitoring/Maintain
+
+			Requirement Analysis
+			Design Docs
+			Coding 
+			Testing
+			Implementation/Deployment
+			Monitoring/Maintain
+
+			
+		Agile Methodologies	--> The Application is splitted into various Modules/Iterations.
+		
+		Iteration 1:		Developer1 
+			Requirement Analysis
+			Design Docs
+			Coding 
+			Testing
+			Implementation/Deployment
+			Monitoring/Maintain	
+		
+		Iteration 2:
+			Requirement Analysis
+			Design Docs
+			Coding 
+			Testing
+			Implementation/Deployment
+			Monitoring/Maintain	
+
+		Iteration 3:					test -- qa & UAT ====> Prod. 
+			Requirement Analysis
+			Design Docs
+			Coding 
+			Testing
+			Implementation/Deployment
+			Monitoring/Maintain	
+			
+		Contiuously develop the code / Integrate the code for testing / Delivery the application to prod.
+		
+		DevOps ---> Is a Software Development Strategy.
+		
+		
+		
+		
+		
+		
+		
+		
+Retail Domain --> E_Commerce 
+Tele-Comm Domain...	
+
+	SP1 --> Release a new offer. --> 
+	SP2 --> 		
+		
+		DevOps ---> Is a Software Development Strategy.
+		
+		
+	Teams Involved ::: in SDLC Process !
+	
+		Development
+		Testing
+		Operations/Infra.
+		Design 
+		Business Analyst
+		PMO
+		Release Mgmt. Team 
+		Solution Archi.
+		Monitoring Team
+		
+		
+		Infra-Structure Team  		Provision Infra-Structure / Environments
+										shell scripts / Manually ==> Terraform / Ansible 
+		Development Team			Coding & Development 
+										IDE, GIT, Build and code integration
+		Testing Team 				Test applications developed by Dev Team
+		Release Management Team		Ensure timely release of product.
+		Monitoring Team 			Prod. Monitoring		
+		Security Team				Ensure the product is developed and deployed as per security policies
+		
+		
+		DevOps Team ????
+		
+			Development 		Monitoring. 
+			
+		Stages of DevOps :::
+		
+			Continuous Development	
+						***Coding as per Design
+							IDEs,GIT,Jenkins,Build Tools like Maven 
+						
+							Code Build --> Compile and Create Artifacts(Binaries- *.war/*.jar)
+							Promote these artifacts to Test Environment 
+							Manually Notify Testing Teams Thru Emails 
+						
+			Continuous Integration
+							Promote these artifacts to Test Environment 
+								Jenkins, application Servers
+			
+			Continuous Testing 
+							Automated Testing Tools - Junit,TestNG,Selenium --> Jenkins
+							
+			Continuous Delivery / Deployment	==> Process of releasing the products to Production envi. -> Ansible - Jenkins - docker & kubernetes
+				
+				Continuous Delivery	
+						This requires Manual Approval for Prod. Release 
+			
+				Continuous Deployment
+						This does not require any Manual Approval for Prod. Release
+						
+			Continuous Monitoring
+						This is to monitor the Infra & application. --> Prometheus, Grafana, Dynatrace...
+
+		Application Architecture :::
+		
+			Monolith Architecture 
+				- Are tightly coupled 
+				Here the product is deployed as a full application.
+			
+			Micro Service Based Architecture	
+				Loosely Coupled == > 
+				The application id deployed as a service.
+				
+				
+www.amazon.com :::
+
+	User_Registration-SignUp	--> Developer1 --> coding --> Testing --> Should able to Deploy to Prod. without impacting others
+	SignIn
+	Search_Products
+	Add to Cart
+	Place Order
+	Payment
+	Confirm
+	Track
+
+
+
+
+Eg.: 			
+Continuous Delivery :
+	banking services ---> ---> Non-Business Hrs.
+		
+Eg.: 			
+Continuous Deployment :			Without any application downtime.  - Matured level of DevOps.
+		amazon.com
+		Netflix	
+		facebook	
+		
+		
+
+
+###############
+Day 2
+30th May 2023
+###############
+		
+		DevOps ::::
+		Lab Access 
+		Class notes
+		
+		Environments ::
+		
+		Non-Prod Environment										Production Environment
+		
+		Dev Envi.	(src.code)			--> create src code -- unit test
+		Build Envi.	(*.war/Docker Image)
+		Test Envi.
+			QA 	- Quality Assurance Testing
+			UAT - User Acceptance Testing	=======>					Prod. Envi.		
+			Pre-Prod/Staging 				=======>					Prod. Envi.
+		
+		
+		
+		
+		Developers Workload :::		
+		
+			New Project 
+			
+			Enhancement project
+			Bugfixing 
+			
+			
+		DevOps :::
+		
+			People 		
+						
+				Infra-Structure Team  		Provision Infra-Structure / Environments
+												shell scripts / Manually ==> Terraform / Ansible 
+												Provisioning/Creating the Server ==> Terraform 
+												Configuration Management Tools	 ==> Ansible
+												
+				Development Team			Coding & Development 
+												IDE, GIT, Build and code integration
+				Testing Team 				Test applications developed by Dev Team
+				Release Management Team		Ensure timely release of product.
+				Monitoring Team 			Prod. Monitoring		
+				Security Team				Ensure the product is developed and deployed as per security policies
+		
+			Process :::
+			
+				Define the Process / Strategies		
+			
+			
+			Tools :::
+			
+				DevOps Tools like Terraform / Ansible 
+				
+				
+	Onboarding Application to DevOps ::::
+	
+		1. Assessment ==> 
+			Generate Assessment Report 
+			Tools 
+			
+		2. Project ==>  
+		
+		
+	DevOps Tools :::
+	
+	
+		Open-Source DevOps Tools 
+		
+			Jenkins,git,docker,kubernetes,terraform,ansible,......
+		
+		Managed Services
+		
+			From Cloud service providers ==> 
+			
+			
+		DevOps Lifecycle :::
+		
+			Plan ===> ALM Tool  -- Application LifeCycle Management Tool
+									Jira / Az Boards 
+									
+									
+		Scripting Language :
+		
+			shell Scripting , groovy(jenkins), yaml(docker,ansible,kubernetes,gitlab-ci,az-pipelines), python
+			
+			
+		GIT 		--> Source Code Management
+		Docker		--> Containerization
+		Kubernetes	--> Container Orchestration Tool
+		Ansible		--> Configuration Management
+		Terraform	--> IAC tools --> Server/Infra Provisioning 
+		Prometheus/Grafana	--> Monitoring 
+		
+		Jenkins		--> Build Orchestration Tool 
+		
+		
+	
+	LAB Access ::::
+		
+		1. Cloud Platform 
+		
+			AWS --> cloud to create the Virtual Machines 
+			- Create AWS Free Tier Account - 12 months.
+			- Launch AWS Resources VMs to work on DevOps Tools.
+			
+	Class notes ::::
+	
+		1. Create Github Account :: https://github.com/
+		
+		2. AWS Free tier account :: 
+				valid email_id
+				phone number
+				valid Credit/Debit Card ==> Should be enabled with International Transaction.
+		
+		
+		
+
+###############
+Day 3
+31st May 2023
+###############	
+	
+		Version Control System Using GIT :::
+		
+			Continuous Development / Integration ==> Developers 
+				IDEs == Create the src
+				Build Tools to build the src code
+				Create Artifacts 
+				Promoted to higher environments
+				Jenkins 
+				VCS.
+				
+			Version Controlling Src Code ???
+			
+				signin.java -->		
+				---
+				-
+				-
+				-
+				-
+				-
+				-
+				
+			Version Control System :
+				Is used to version control the src code .
+				It help the track the changes 
+					It assigns a unique version_ID / Tag / Commit_Id 
+					
+					
+			signin.java			==> signin.java_v1.0
+			
+			func1()
+			{
+			}
+			func2()
+			{
+			}
+			func3()
+			{
+			}					==> signin.java_v1.1
+			
+			GIT --> Opensource Distributed Version Control System.
+					Is used to version control the src code .
+					It help the track the changes.
+					Used to perform parallel Development
+					
+					
+			signin.java
+			
+			func1()			save -> signin.java_v1.0
+			func2()			save -> signin.java_v1.1
+			
+			
+			Repository ==> Collection of files and folders 
+			
+			Remote Repository --> Github --
+			
+			GIT CLI 
+			
+			GIT, github, gitlab, bitbucket, azrepo.
+			
+			Distributed Version Control System - GIT :::
+			
+			
+			GIT File Workflow :::
+			
+			Local Machine																						Remote Server
+			
+			Working Directory	--------->	Staging Area	------------->	Local Repository	-------------->	Remote Repository
+								 git add					  git commit						  git push
+			d:/dir1/s1.java	 
+			
+			
+			signin.java
+			
+			func1()
+				{
+				asdfas
+				dfasdfas
+				dfs;
+				d
+				}
+				
+
+		Developers' Workload :::		
+		
+			New Project 
+			
+			Enhancement project
+			Bugfixing 
+			
+			
+		GIT Misc Commands::
+		
+		fork				==> Copy/Clone a remote repo. to another remote repository.		
+		git clone			==> Copy/Clone the remote repo. to local.
+		git add				==> add the changes for working dir. to Staging Area.
+		git commit			==> commit the changes from staging area to local repository.
+		
+		git push 			==> Push the changes from local repo. to remote repo.
+		
+		git fetch/pull		==> both fetch and pull commands are used to handle incremental changes.
+			fetch			==> It is just used to check for incremental changes in remote repo.
+								If there are any incremental changes in remote repo. The changes will be updated only Local Repository.
+								
+								To update the working dir. we use merge/pull/checkout
+								
+			pull			==> It is used to check for incremental changes in remote repo.
+								If there are any incremental changes in remote repo. The changes will be updated in working dir. as well in Local Repository.
+								
+								git pull ==> git fetch + git merge 
+								
+
+	
+		Demo ::::
+		
+		1. Installation of GIT CLI in local Machine (windows/linux/mac)
+			In windows Machine ::: ==> 
+					git bash***
+					git gui
+					git cli
+			Create AWS Account 
+					- Launch AWS Instances -- Linux
+							Connect to VM :
+									EC2 Instance Connect 
+									SSH Clients :
+											Putty
+											Mobaxterm
+									Terminal
+					- Install git 
+					
+					Linux MAchines :: Package Managers ==> are used to install/update/remote the packages
+								Ubuntu -- apt-get 
+								fedora -- yum (prev. version)
+										  dnf (latest version)
+					
+					
+
+			
+
+	
+		2. Remote Repo. --> github.
+		
+		
+		
+		Working with Local GIT Repositories ::::
+		
+		yum install git
+		
+		mkdir DCP29
+		
+		cd DCP29
+		
+		mkdir Projectrepo1
+		
+		cd Projectrepo1
+		
+		DCP29/Projectrepo1
+		
+		
+		git init 	==> Is used to initialize a local repo. - Create a default branch - master
+															- Create .git folder/dir -- to manage the git repository.
+															
+		git config ::
+		
+		Global Config		==> It is applicable to all the repos. 
+			git config --global user.name "Loksai"
+			git config --global user.email "Loksai@xyz.com"
+		
+		Local Config.		==> It is applicable to a specific repo.		
+			git config user.name "Loksai"
+			git config user.email "Loksai@xyz.com"
+			
+			
+		git status ==> used to get the current status of git repo.
+		
+		
+
+		create a file1.txt
+		git add file1.txt
+		git commit -m "created file1.txt"
+		git status
+
+   28  git config --global user.name "Loksai"
+   29  git config --global user.email "Loksai@xyz.com"
+   30  clear
+   31  git status
+   32  ls
+   33  echo "rec1" >> file1.txt
+   34  cat file1.txt 
+   35  git status
+   36  git add file1.txt 
+   37  git status
+   38  git commit -m "Initial Commit"
+   39  git status
+   40  git log 
+   41  echo "rec1" >> file2.txt
+   42  git add file2.txt 
+   43  git commit -m "CM1.1"
+   44  git log
+   45  history
