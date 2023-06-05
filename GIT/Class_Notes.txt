@@ -513,3 +513,880 @@ Day 3
    43  git commit -m "CM1.1"
    44  git log
    45  history
+   
+  
+###############
+Day 4
+1st June 2023
+###############	
+
+	git init
+	
+	git add file1.txt
+	git add file3.txt file4.txt
+	git add *.java
+	git add .
+
+Remove files from Staging Area :
+
+	git rm --cached <file_name> ==> this jus remove the files from staging are. but file will be present in working dir.
+	git rm -f <file_name>		==> this will remove from staging as well as working dir.
+
+
+	git status 
+
+	git log 
+	git log --oneline
+	git log --stat
+	git log -2 
+	git log -2 --oneline
+	git log -2 --stat
+
+
+git ignore ::::
+
+	Java_project -- folder			
+		signin.java
+		signin.class
+		properties
+		config
+		varibles
+		target
+		   signin.war
+
+
+	.gitignore --> Used to Ignore the file --->
+
+	*.class
+	*.war
+	target/
+	properties
+
+File creation in Linux ::
+
+echo "re1" >> file1.txt		create a file with rec.
+
+touch file2.txt			creates empty file
+
+vi file3.txt			using vi editor.
+	
+*.txt ==> 
+
+
+
+Local repo.						remote repo
+
+Java_project Folder		Pushed 			remote repo.
+
+src/
+	index.jsp
+	fun1.java
+
+test/	
+	fun1_test.java
+
+dbpassword
+secrets
+
+
+.gitignore
+
+dbpassword
+secrets
+
+.gitignore:::: in remote repos.
+
+
+
+git diff command ::::::
+
+file1.txt ==> lr
+
+git diff 	==> track t changes between untracked file and the committed file.
+
+git diff --cached ==> track t changes that have staged but not committed.
+git diff --name-only --cached
+
+git diff branch1 branch2 -- between branches
+
+git diff commit_id1 commit_id2 -- between commits
+
+git commit :::
+
+	commit Message :::
+
+ 
+###############
+Day 5
+2nd Jun. 2023
+###############	
+
+	git local repo creation,commit, diff,gitignore,git rm 
+	
+	Next :::
+	git reset,revert
+	git branching
+	
+	
+	git add , git commit , commit_id, HEAD
+	
+	git reset ==> is used to undo the changes --> HEAD position will be moved from the latest to any specific commit point.
+	
+	git reset --soft	
+			cm1,....,10
+			
+			It will move the HEAD position to previous/any specific commit point.
+			The Changes will be removed from local repo. But, it will be available in Staging area and Working Dir.					
+	
+	git reset --mixed	--> default
+
+			It will move the HEAD position to previous/any specific commit point.
+			The Changes will be removed from local repo. and staging area. but the changes will be present in working dir.	
+			
+	git reset --hard
+
+			It will move the HEAD position to previous/any specific commit point.
+			The Changes will be removed from local repo., staging area as well as from working dir.	
+			
+	git reset <option> <commit_id>
+	
+
+	
+	git revert ==> It is used to undo the changes without impacting the commit history. This can be used in the shared repo.
+					Safest way to undo the changes 
+					Create a New Commit point based on revert action.
+					
+	git revert <commit_id>	
+	
+	git revert and reset (hard) ===> 
+	
+	
+	prod_app_v1.1
+	prod_app_v1.2
+	
+	prod_app_v1.3		==> jus added to prod
+	prod_app_v1.3.1		==> jus added to prod
+	prod_app_v1.3.2		==> jus added to prod	
+	
+	
+	4 - 6 hrs ==> 
+		1st try to fix
+		or else do safe revert action
+	
+
+
+
+GIT Branching Techniques ::::
+
+	
+		-	To perform parallel Development
+		-	This help to independently work on the changes without impacting others.
+		-	The integrity of Master Branch can be maintained at any point of time
+		
+	
+	Proj. rel. ==> 
+	
+	java_proj.
+	
+		src/
+			payment.java ===> 
+			
+
+	default present in master branch 
+	
+	GIT Branching Strategies ::::
+	
+	-> single user envi.
+	
+		repo1(master) 
+			payment.java ===> (create 5 func.)
+			
+			feature_branch1 ==> create func1.	--> merging these changes to master 
+			feature_branch2 ==> create func2.	--> merging these changes to master 				
+			feature_branch3 ==> create func3.	--> merging these changes to master 			
+			feature_branch4 ==> create func4.			
+			feature_branch5 ==> create func5.	
+
+
+	
+		repo1(master) cm1,2,3,4,5
+		
+			Dev_Branch :
+			
+				feature_branch1 ==> create func1.
+				feature_branch2 ==> create func2.				
+				feature_branch3 ==> create func3.		
+				feature_branch4 ==> create func4.			
+				feature_branch5 ==> create func5.	
+
+
+
+
+	-> Multi user envi.
+	
+
+		repo1(master) cm1,2,3,4,5	
+		
+			Release_Branch :::
+			
+				Intergration_Branch1		- Team1 
+			
+					Dev_Branch1 :	- Developer1
+					
+						feature_branch1 ==> create func1.
+						feature_branch2 ==> create func2.				
+						feature_branch3 ==> create func3.		
+						feature_branch4 ==> create func4.			
+						feature_branch5 ==> create func5.	
+
+
+					Dev_Branch2 :	- Developer2
+					
+						feature_branch1 ==> create func1.
+						feature_branch2 ==> create func2.				
+						feature_branch3 ==> create func3.		
+						feature_branch4 ==> create func4.			
+						feature_branch5 ==> create func5.	
+						
+					Dev_Branch3 :	- Developer3
+					
+						feature_branch1 ==> create func1.
+						feature_branch2 ==> create func2.				
+						feature_branch3 ==> create func3.		
+						feature_branch4 ==> create func4.			
+						feature_branch5 ==> create func5.	
+						
+
+				Intergration_Branch2		- Team2
+			
+					Dev_Branch1 :	- Developer1
+					
+						feature_branch1 ==> create func1.
+						feature_branch2 ==> create func2.				
+						feature_branch3 ==> create func3.		
+						feature_branch4 ==> create func4.			
+						feature_branch5 ==> create func5.	
+
+
+					Dev_Branch2 :	- Developer2
+					
+						feature_branch1 ==> create func1.
+						feature_branch2 ==> create func2.				
+						feature_branch3 ==> create func3.		
+						feature_branch4 ==> create func4.			
+						feature_branch5 ==> create func5.	
+						
+					Dev_Branch3 :	- Developer3
+					
+						feature_branch1 ==> create func1.
+						feature_branch2 ==> create func2.				
+						feature_branch3 ==> create func3.		
+						feature_branch4 ==> create func4.			
+						feature_branch5 ==> create func5.	
+						
+
+			master
+				adhoc/hotfix/bugfix branch
+				
+	
+		Working with GIT Branches ::
+		
+			Create Branch
+			merge 
+			
+			
+		Repo1 :
+		
+			master 
+				feature1
+				feature2
+				feature3
+		
+		Create Branch
+		
+			git switch -c feature1 
+			git branch feature3
+			git checkout -b feature4
+			
+			to merge ::
+				
+				git switch master(target branch)		
+				git merge feature1 
+				
+    1  f:
+    2  cd f:
+    3  clear
+    4  git dir
+    5  git version
+    6  clear
+    7  mkdir DCP-29
+    8  cd DCP-29/
+    9  clear
+   10  ls
+   11  mkdir proj1
+   12  ls
+   13  cd proj1/
+   14  git init
+   15  clear
+   16  cd ..
+   17  clear
+   18  ls
+   19  mkdir testrepo1
+   20  cd testrepo1/
+   21  clear
+   22  git init
+   23  ls
+   24  echo "rec1" >> file1.txt
+   25  git add .
+   26  git commit -m "CM1"
+   27  git config --global user.email "loksaieta@xyz.com"
+   28  git config --global user.name "Loksai"
+   29  git commit -m "CM1"
+   30  git log --oneline
+   31  ls
+   32  echo "rec1" >> file2.txt
+   33  git add .
+   34  git commit -m "CM2"
+   35  echo "rec1" >> file3.txt
+   36  git add .
+   37  git commit -m "CM3"
+   38  echo "rec1" >> file4.txt
+   39  git add .
+   40  git commit -m "CM4"
+   41  echo "rec1" >> file5.txt
+   42  git add .
+   43  git commit -m "CM5"
+   44  clear
+   45  ls
+   46  git log --oneline
+   47  git status
+   48  git ls-files
+   49  ls
+   50  git ls-files
+   51  git log --oneline
+   52  git reset --soft 0b1678f
+   53  git status
+   54  git ls-files
+   55  ls
+   56  git log --oneline
+   57  git commit -m "CM1.5"
+   58  git log --oneline
+   59  ls
+   60  git ls-files
+   61  git status
+   62  git reset --mixed 0b1678f
+   63  git ls-files
+   64  ls
+   65  git log --oneline
+   66  git status
+   67  git add .
+   68  git commit -m "CM1.5"
+   69  git log --oneline
+   70  git ls-files
+   71  ls
+   72  git status
+   73  git reset --hard 0b1678f
+   74  git log --oneline
+   75  git status
+   76  git ls-files
+   77  ls
+   78  git log --oneline
+   79  clear
+   80  git log --oneline
+   81  ls
+   82  git ls-files
+   83  git reset --hard 4a7c415
+   84  ls
+   85  git log --oneline
+   86  echo "rec1" >> file3.txt
+   87  git add .
+   88  git commit -m "CM3"
+   89  echo "rec1" >> file4.txt
+   90  git add .
+   91  git commit -m "CM4"
+   92  echo "rec1" >> file5.txt
+   93  git add .
+   94  git commit -m "CM5"
+   95  clear
+   96  git log --oneline
+   97  git status
+   98  git revert ac9339d
+   99  git log --oneline
+  100  git status
+  101  git ls-files
+  102  cat file5.txt
+  103  ls
+  104  git show b36c463
+  105  git log --oneline
+  106  git revert b36c463
+  107  git log --oneline
+  108  git ls-files
+  109  ls
+  110  git show 4a7c415
+  111  git revert 4a7c415
+  112  git log --onelin
+  113  git log --oneline
+  114  ls
+  115  git ls-files
+  116  git revert c4523ea
+  117  ls
+  118  clear
+  119  ls
+  120  git log --oneline
+  121  cd ..
+  122  ls
+  123  mkdir testrepo2
+  124  cd testrepo2
+  125  clear
+  126  git init
+  127  git status
+  128  ls
+  129  cclear
+  130  clear
+  131  echo "rec1" >> s1.txt
+  132  git add .
+  133  git commit -m "CM1 from master"
+  134  echo "rec1" >> s2.txt
+  135  git add .
+  136  git commit -m "CM2 from master"
+  137  echo "rec1" >> s3.txt
+  138  git add .
+  139  git commit -m "CM3 from master"
+  140  clear
+  141  git log --oneline
+  142  git branch
+  143  git switch -c feature1
+  144  git branch
+  145  git log --oneline
+  146  ls
+  147  git switch master
+  148  git log --oneline
+  149  git switch feature2
+  150  git switch -c feature2
+  151  git switch master
+  152  git branch
+  153  git branch feature3
+  154  git branch
+  155  git branch feature3
+  156  git checkout -b feature4
+  157  git branch
+  158  git checkout -b feature4
+  159  git switch master
+  160  git branch
+  161  git log --oneline
+  162  git switch feature1
+  163  git log --oneline
+  164  ls
+  165  ehco "rec1" >> f1.txt
+  166  echo "rec1" >> f1.txt
+  167  git add .
+  168  git commit -m "CM1 from feature1"
+  169  git log --oneline
+  170  ls
+  171  git switch master
+  172  ls
+  173  git log --oneline
+  174  git merge feature1
+  175  git log --oneline
+  176  ls
+  177  cat f1.txt
+  178  git switch feature1
+  179  git log --oneline
+  180  history
+
+###############
+Day 6
+5th June 2023
+###############	
+
+Branching Techniques :::
+
+	git branch feature1
+	git switch -c feature1
+	git checkout -b feature1
+	
+	master 
+		feature1
+		feature2
+		feature3
+	
+	
+	master 
+		dev
+			feature1
+			feature2
+			feature3
+	
+	master 
+	
+		integration
+			dev1
+				feature1
+				feature2
+				feature3
+			dev2
+				feature1
+				feature2
+				feature3
+
+	master 
+
+		Release
+			integration
+				dev1
+					feature1
+					feature2
+					feature3
+				dev2
+					feature1
+					feature2
+					feature3
+
+			integration
+				dev1
+					feature1
+					feature2
+					feature3
+				dev2
+					feature1
+					feature2
+					feature3
+
+
+
+	git branch feature1
+	git switch -c feature1
+	git checkout -b feature1
+
+
+	GIT MERGE :::
+	
+		master 
+			feature1	==> current
+			
+			git switch master		//Switch to target branch before merge.
+			git merge feature1		// Shd be excuted from target Branch.
+			
+			
+			
+		master :: f1,2,3
+		
+		feature1 -=> f1,2,3,4
+		feature2 -=> 
+			
+			
+		To Fix Merge Conflict :::		
+		
+		1. First identify the file causing merge conflict
+		2. Review the file content
+		3. Decide which changes has to be present.
+		4. Update the file and add the changes 
+		5. Commit changes in target branch.
+		
+		DevOps :::: 
+			We should always prevent the merge conflict. 
+			
+		Avoid Merge Conflict :::
+			-	Review the changes before merge.
+			-	Maintain proper branching strategy to ensure integrity of master.
+			
+			-	GIT provides some func. process to prevent merge conflict in master.
+			
+		git Rebase :::	==> Local branches 
+		
+		
+		git Rebase :::
+		
+			It is used to create/rebase the current branch.
+			It always helps to keep the current branch in-sync with target branch.
+			It is used to avoid conflict in master/target Branch.
+			Execute rebase command from current branch.
+			ALWAYS do rebase before merge.
+			
+
+			master :: file1.txt 	rec1 
+									rec2
+									
+				feature1	==> file1.txt == rec1,rec2  
+				feature2 	==> file1.txt == rec1,rec2 of feature2
+				
+			master :::
+						cm1,cm2,cm3
+						
+						cm1,cm2,cm3,cm1_from_feature1
+						
+						cm1,cm2,cm3,cm1_from_feature1,cm1_from_feature2 == this is wat expected. 
+						
+				
+				feature1	==>	cm1,cm2,cm3
+								cm1,cm2,cm3,cm1_from_feature1
+					git switch master 
+					git merge feature1					
+				
+				
+				feature2	==>	cm1,cm2,cm3
+								cm1,cm2,cm3,cm1_from_feature2
+								
+					git rebase master 				==> should be executed from current branch.
+								cm1,cm2,cm3,cm1_from_feature1,cm1_from_feature2
+					git switch master 
+					git merge feature2	
+
+				
+			rebase (vs) pull 
+
+			Rebase :
+					Rebase in used within the repository, between the branches .
+			Pull :		
+					Used to keep the local repo. in sync with remote repo.
+					
+					
+		GIT SQUASH ::::
+
+			It is used to combine more than one commits into a single commit.
+			
+			master :::
+						cm1,cm2,cm3
+						
+						cm1,cm2,cm3,f1-cm1,2,3,4,5,6,7,8,.....,100
+						
+						cm1,cm2,cm3,f1-cm1,2,3,4,5,6,7,8,.....,100,f2-cm1,2,3,4,5,6,7,8,.....,500
+						
+				feature1: 
+						cm1,cm2,cm3,f1-cm1,2,3,4,5,6,7,8,.....,100
+						
+						git rebase master 
+						git switch master
+						git merge --squash feature1  			// While Merging
+						
+						cm1,cm2,cm3,f1-final_commit
+						
+						
+						
+				feature2: 
+						cm1,cm2,cm3,f2-cm1,2,3,4,5,6,7,8,.....,500
+
+						git rebase master 
+						git switch master
+						git merge feature2 
+						
+					Java program ==> func1,func2,func3,func4,func5
+					
+						cm1,cm2,cm3,f2-cm1,2,3,4,5,6,7,8,.....,500
+						
+						git rebase -i HEAD~500
+							cm1,cm2,cm3,f2-CM-func1,
+						
+						
+						
+			git squash :: 
+						This can be implemented at two levels ::
+						
+				1. While working in the current branch (Before Merge)
+						git rebase -i HEAD~5
+			
+				2. While Merging 
+				
+					git merge --squash feature1 
+						git commit -m "Combined commits frm feature1"
+			
+	master	cm1,REL1.0
+
+		Release		cm1,team1-cm,team2-cm
+			integration1 cm1,dev1-cm,dev2-cm																	Team1
+				dev1cm1,(f1cm1,2,3,4,5,6,7,8,9,10),(f2cm1,2,3,4,5,6,7,8,9,10),(f3cm1,2,3,4,5,6,7,8,9,10)
+					feature1 - (f1cm1,2,3,4,5,6,7,8,9,10)
+					feature2 - (f2cm1,2,3,4,5,6,7,8,9,10)
+					feature3 - (f3cm1,2,3,4,5,6,7,8,9,10)
+				dev2	cm1,(f1cm1,2,3,4,5,6,7,8,9,10),(f2cm1,2,3,4,5,6,7,8,9,10),(f3cm1,2,3,4,5,6,7,8,9,10) 
+					feature1
+					feature2
+					feature3
+
+			integration2 cm1,dev1-cm,dev2-cm																	Team2
+				dev1	cm1,(f1cm1,2,3,4,5,6,7,8,9,10),(f2cm1,2,3,4,5,6,7,8,9,10),(f3cm1,2,3,4,5,6,7,8,9,10)
+					feature1
+					feature2
+					feature3
+				dev2	cm1,(f1cm1,2,3,4,5,6,7,8,9,10),(f2cm1,2,3,4,5,6,7,8,9,10),(f3cm1,2,3,4,5,6,7,8,9,10)
+					feature1
+					feature2
+					feature3
+			
+			
+		git cherry-pick <commit_id>
+		git cherry-pick team1-cm	
+
+  192  mkdir dcp29
+  193  cd dcp29/
+  194  clear
+  195  mkdir repo1
+  196  cd repo1/
+  197  git init
+  198  echo "rec1" >> file1.txt
+  199  git add .
+  200  git commit -m "CM1 from master"
+  201  echo "rec1" >> file2.txt
+  202  git add .
+  203  git commit -m "CM1 from master"
+  204  echo "rec1" >> file3.txt
+  205  git add .
+  206  git commit -m "CM3 from master"
+  207  clear
+  208  git log
+  209  clear
+  210  clear
+  211  git branch
+  212  ls
+  213  git switch -c feature1
+  214  ls
+  215  git log --oneline
+  216  echo "rec1" >> file4.txt
+  217  git add .
+  218  git commit -m "CM1 from feature1"
+  219  git switch master
+  220  git merge feature1
+  221  git log --oneline
+  222  ls
+  223  git switch -c feature2
+  224  echo "rec2 from feature2" >> file1.txt
+  225  cat file1.txt
+  226  git switch master
+  227  git switch feature2
+  228  git add .
+  229  git commit -m "CM1 from feature2"
+  230  git switch master
+  231  git log --oneline
+  232  git merge feature2
+  233  ls
+  234  cat file1.txt
+  235  git log --oneline
+  236  git switch feature1
+  237  cat file1.txt
+  238  git log --oneline
+  239  echo "rec2 from feature1" >> file1.txt
+  240  git add .
+  241  git commit -m "CM2 from feature1"
+  242  cat file1.txt
+  243  git switch master
+  244  cat file1.txt
+  245  git merge feature1
+  246  cat file1.txt
+  247  vi file1.txt
+  248  git status
+  249  git add .
+  250  git status
+  251  git commit -m "fixed Merge Conflict"
+  252  git status
+  253  cat file1.txt
+  254  clear
+  255  ls
+  256  cd ..
+  257  mkdir repo2
+  258  cd repo2
+  259  git init
+  260  clear
+  261  echo "rec1" >> f1.txt
+  262  git add .
+  263  git commit -m "CM1 from master"
+  264  echo "rec1" >> f2.txt
+  265  git add .
+  266  git commit -m "CM2 from master"
+  267  echo "rec1" >> f3.txt
+  268  git add .
+  269  git commit -m "CM3 from master"
+  270  clear
+  271  clear
+  272  git log --oneline
+  273  git branch feature1
+  274  git branch feature2
+  275  git branch
+  276  git switch feature1
+  277  clear
+  278  git log --oneline
+  279  ls
+  280  echo "rec1" >> s1.txt
+  281  git add .
+  282  git commit -m "cm1 from feature1"
+  283  git log --oneline
+  284  git switch master
+  285  git merge feature1
+  286  ls
+  287  git log --oneline
+  288  git switch feature2
+  289  ls
+  290  git log --oneline
+  291  echo "rec1" >> a1.txt
+  292  git add .
+  293  git commit -m "CM1 from feature2"
+  294  git log --oneline
+  295  ls
+  296  git rebase master
+  297  git log --oneline
+  298  ls
+  299  git switch master
+  300  git merge feature2
+  301  git log --oneline
+  302  clear
+  303  ls
+  304  git branch
+  305  git status
+  306  git switch feature1
+  307  clear
+  308  ls
+  309  git log --oneline
+  310  echo "rec1" >> q1.txt
+  311  git add .
+  312  git commit -m "f1cm1"
+  313  echo "rec1" >> q2.txt
+  314  git add .
+  315  git commit -m "f1cm2"
+  316  echo "rec1" >> q3.txt
+  317  git add .
+  318  git commit -m "f1cm3"
+  319  echo "rec1" >> q4.txt
+  320  git add .
+  321  git commit -m "f1cm4"
+  322  echo "rec1" >> q5.txt
+  323  git add .
+  324  git commit -m "f1cm5"
+  325  git log --oneline
+  326  ls
+  327  git switch master
+  328  git merge --squash feature1
+  329  ls
+  330  git status
+  331  git commit -m "Combined commits from feature1"
+  332  git status
+  333  git log --oneline
+  334  ls
+  335  git switch feature1
+  336  git status
+  337  cler
+  338  clear
+  339  git log --oneline
+  340  echo "rec1" >> w1.txt
+  341  git add .
+  342  git commit -m "f1cm1.1"
+  343  echo "rec1" >> w2.txt
+  344  git add .
+  345  git commit -m "f1cm1.2"
+  346  echo "rec1" >> w3.txt
+  347  git add .
+  348  clear
+  349  git status
+  350  git commit -m "f1cm1.3"
+  351  git log --oneline
+  352  ls
+  353  echo "rec1" >> f4.txt
+  354  git add .
+  355  git commit -m "f1cm1.4"
+  356  git log --oneline
+  357  git rebase -i HEAD~4
+  358  git log --oneline
+  359  ls
+  360  history		
+		
+Next:
+	Handling Remote Repository::::
+
