@@ -1389,4 +1389,248 @@ Branching Techniques :::
 		
 Next:
 	Handling Remote Repository::::
+	
+###############
+Day 6
+6th June 2023
+###############				
+			
+			
+		Handling GIT Remote Repositories ::::
+		
+		
+			
+		Local Repo..
+		
+		
+		
+		Envi. 
+		
+			Dev
+			Testing 
+				QA 
+				UAT
+			
+			
+		Remote Repo. 
 
+			github remote repo.
+			gitlab
+			az repo 
+			aws codecommit
+			bitbucket
+		
+		
+		Developers' Workload :
+		
+		case1:
+			New Project 
+		case2:	
+			Enhancement Project
+			Bugfixing 
+			
+		
+		Case2 ::
+			Remote repo is already present .
+			
+			git clone 
+			
+			git push 
+			
+			git pull
+			
+			git push 
+			
+			git fetch 
+			
+			git remote 
+			
+			
+			
+		git clone :::
+		
+			git clone https://github.com/LoksaiETA/dcp-29-testrepo1.git
+			
+				username : loksaieta
+				Access Token:
+			
+		Handle remote repo in local ::::
+			
+		git clone 
+		
+		git add .
+		
+		git commit -m "Local Changes"
+		
+		git push -u origin main 
+		
+		git remote -v 
+			
+			
+		case1:
+			New Project 			
+			
+		Create Local Repo. 
+		
+			add 
+			commit 
+		
+		git remote add origin <clone_url>
+		
+		git remote remove add origin <clone_url>
+		
+		push it to remote repo.
+		
+		
+		git fetch ==> Is used to get the incremental changes from remote repo to local repo.
+		
+		git pull origin master  ==> Is used to pull the incremental changes from remote to local repo. as well as working dir.
+			
+
+
+		GIT Misc Commands::
+		
+		fork				==> Copy/Clone a remote repo. to another remote repository.		
+		git clone			==> Copy/Clone the remote repo. to local.
+		git add				==> add the changes for working dir. to Staging Area.
+		git commit			==> commit the changes from staging area to local repository.
+		
+		git push 			==> Push the changes from local repo. to remote repo.
+		
+		git fetch/pull		==> both fetch and pull commands are used to handle incremental changes.
+			fetch			==> It is just used to check for incremental changes in remote repo.
+								If there are any incremental changes in remote repo. The changes will be updated only Local Repository.
+								
+								To update the working dir. we use merge/pull/checkout
+								
+			pull			==> It is used to check for incremental changes in remote repo.
+								If there are any incremental changes in remote repo. The changes will be updated in working dir. as well in Local Repository.
+								
+								git pull ==> git fetch + git merge 
+	
+	Summary :::
+	
+		git installation:
+		Git branching Strategies:
+		Git file workflow
+		GIT Mics Commands 
+		Git remote repo.
+		
+		git stash ::::
+		
+				-Is used to store the uncommitted changes to a temp. area.
+		
+		
+		developer :::
+		
+			master 		cm1,cm2,c3
+			
+				feature1 -> cm1,cm2,c3,
+				
+					we cannot leave the branch with uncommitted changes. 
+
+				hotfix 
+			
+		git stash 
+
+		git stash list 
+		
+		git stash show <stash_id>
+		
+		git stash save "msg"
+			
+		git stash apply --> will get the changes back to staging area. But changes are not removed from stash list.	
+		git stash apply stash@{2}
+		
+		git stash pop  --> will get the changes back to staging area. and changes are automatically removed from stash list.
+
+		git stash drop ==> removes the latest entry from the stash list. 
+		git stash drop stash@{2}		
+			
+		git stash clear --> removes all the entry from the stash list. 			
+		
+		git stash branch feature1bkup		==> craete new branch based on stashed entry.
+			
+		
+		master ---> cm1,cm2,cm3 --> tag it with the release id
+		
+			jdk 1.7
+			jdk 1.8	
+
+	Continuous Integration ::: 
+	
+	Jenkins --> Build Orchestration Tool. 
+	
+	
+	Developer ===> Create source code :::
+	
+	
+	Development Activities :::::
+	
+		--> Create Application Source Code. 
+				IDE,Tools 
+	
+	
+			- create src code,
+			- unit testing 
+			- build - compile & create artifacts(binaries) -- Store the artifacts 
+			- deploy the changes to test environment 
+			- Notify the testing team 
+	
+		
+	Build ORchestration Tool like Jenkins :::
+	
+			- Create the source code, and commit the code in src code repos. (github)
+			Jenkins will automate all the below task:
+				- unit testing 
+				- build - compile & create artifacts(binaries) -- Store the artifacts 
+				- deploy the changes to test environment 
+				- Notify the testing team 
+				- automated testing 
+				- promote the code to higher envi.
+				- even to prod .
+				- monitoring 
+				
+	bamboo 
+	az pipeline
+	aws codepipeline 
+	gitlab-ci 
+	
+		1. Understand what is Jenkins 
+		2. Jenkins Architecture.
+		3. Your roles & Responsibilities :::
+		
+		Users :::
+		
+			Developers ::: -- They are just consumers. 
+			
+			DevOps Team :::: Admin to Jenkins Server.
+			
+				1. Installation of Jenkins 
+				2. Administration of Jenkins 
+					- Plugins management 
+					- Tools Management
+					- User Management
+					- Security Management
+					- Credential Management 
+					- Jenkins Slave/Node Management
+					- Creation of CICD Pipeline and automation
+					- Backup and recovery 
+					- Strategies to maintain the Jenkins Server 
+							Server Upgrade
+							Backup 
+							Recovery
+							
+			Jenkins uses Groovy script to create any Automation/Pipelines 
+			Jenkins is a Master Slave Architecture :::
+			
+			Jenkins Master 	--> Used to create Jenkins Jobs/Project/Pipelines 
+							-->	Schedule the Jobs to Slave Machines 
+							
+			Jenkins Slave 	--> Used to actually execute/run the Jenkins Jobs/Project
+			
+			Scripting ::: 	groovy,shell,yaml,python
+				
+			
+			
+	
