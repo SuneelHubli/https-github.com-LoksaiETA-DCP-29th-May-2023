@@ -1,0 +1,130 @@
+			
+			
+###############
+Day 8
+7th June 2023
+###############				
+			
+			
+			
+		1. Installation of Jenkins	
+				Working with Jenkins
+				
+			Jenkins_Master		--> Install Jenkins & Create Jenkins Project 
+			
+					Build Java Application Team --> Build --> Install build tools, unit testing tool, 
+					
+					
+			Jenkins Master & Slave Architecture :::
+			
+			Jenkins Master 	--> Used to create Jenkins Jobs/Project/Pipelines 
+							-->	Schedule the Jobs to Slave Machines 
+							
+			Jenkins Slave 	--> Used to actually execute/run the Jenkins Jobs/Project				
+
+			Jenkins Master
+				- Slave1	--> Java build 			--
+				- Slave2	--> Python Build 
+				- Slave3	--> .Net
+				- Slave4	--> Angular
+				- Slave5	--> NodeJS
+			 
+			Using Jenkins Master & Slave Architecture we can distribute the workload.
+			
+			
+		AWS Platform ::: Launch AWS EC2 Instances - Ubuntu
+		
+			Launch 2 VMs 
+			
+			Master 	-> Install Jenkins 
+			
+		- Access to AWS 
+		- Connect to EC2 Instance :::
+			- EC2 Instance Connect 
+			- SSH Client in ur local Machine 	==> Tool used to connect with any remote servers
+				MobaXterm	-	for windows machine 
+					https://mobaxterm.mobatek.net/download.html
+				Putty		Mac Users
+			- Terminal		Mac Users / Linux 
+				
+				
+		AWS --> run a instance for 750 hrs / month
+		
+		10 Instances --> 75 hrs 
+		
+		
+		apt ==> is a package manager for ubuntu machine
+		
+		Linux 
+		
+			apt 	ubuntu 
+			yum 	rhel centos 
+			rpm
+			dnf 
+		
+		
+		Install Jenkins :::: 
+		
+			https://www.jenkins.io/doc/book/installing/
+
+
+sudo apt update
+sudo apt install openjdk-11-jre
+java -version
+
+
+curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key | sudo tee \
+  /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
+  https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
+sudo apt-get update
+sudo apt-get install jenkins
+
+
+	Jenkins run as a service ==> by default runs in port 8080 
+	
+	
+	Access Jenkins Server ::::
+	
+		Post Installation activities :::
+		
+	
+	/var/lib/jenkins
+	
+	
+	Plugins are just an extension
+
+
+	Jenkins Project :::
+	
+		- Freestyle Project 	-- Manual Config. 
+		- Pipeline Project 		-- Automated.
+			
+			Java application 
+			perform build 
+
+
+
+		Jenkins Variables :::
+
+			Environment Variables
+			User Defined Variables 
+
+
+
+		to deploy the appln. 
+		
+			Dev / QA / UAT / Pre-prod / prod
+
+
+
+Next :::
+
+		- Pipeline Project 		-- Automated.
+			
+			Java application 
+			perform build,
+			create artifact 
+			slave1..
+
