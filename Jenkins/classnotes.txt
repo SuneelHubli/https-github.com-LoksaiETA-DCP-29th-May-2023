@@ -128,3 +128,193 @@ Next :::
 			create artifact 
 			slave1..
 
+		systemctl start jenkins
+		systemctl stop jenkins
+		systemctl restart jenkins
+		systemctl status jenkins
+
+
+			
+###############
+Day 9
+8th June 2023
+###############	
+
+		- Pipeline Project 		-- Automated.
+			
+			Java application 
+			perform build,
+			create artifact 
+			slave1...
+
+
+	
+		Jenkins Pipeline :::
+		
+			- Scripted Pipeline 
+			
+			- Declarative Pipeline
+			
+pipeline {
+	agent any
+
+	stages {
+		stage('SCM Checkout') {
+			steps {
+				echo 'Hello World'
+			}
+		}
+		stage('Java App Build') {
+			steps {
+				echo 'Hello Team'
+			}
+		}
+		stage('Deploy to QA Server') {
+			steps {
+				echo 'Deploy to QA'
+			}
+		}
+	}
+}
+
+
+
+
+
+
+CICD Workflow ::::
+
+		Dev Envi. ==> Developers create the src code & push the src code into src code repository.(github)
+		
+		Jenkins Pipeline :::
+		
+			SCM Checkout Stage
+				
+				
+			Build & Create Artifacts 
+					Build is a process of compiling the src code and creating artifacts. 
+					
+						Maven - Build Tool 
+							Install Maven ==> 
+							Maven Goals ==> Clean,package,test,build....
+							pom.xml ===> 
+			
+			Automated Unit Testing 
+			Deploy to QA Envi.
+
+
+
+Configure Jenkins Master & Slave Machines..
+
+
+		Jenkins_Master 		
+			Slave Machines 			
+					Login to Slave Machine :
+							Install all the required build tools 
+									git,jdk,maven
+					Create User & SSH Keys
+
+		Attach the Slave Machine in Jenkins as a Node/Agent.
+				using SSH Key based Authentication
+				
+				- Password based 
+				- tokens based 
+				- passwordless Authentication / SSH-Key based auth.
+		
+		Create the CI Pipeline to automate build 
+
+
+
+
+Java Maven Web Application ==> Project src code in github repo. 
+
+Configure Slave Node1 for Java Maven App. :
+
+	Install Java ::
+
+	sudo apt update -y 
+	sudo apt install openjdk-11-jre -y
+	java -version
+
+	Install GIT :
+
+	sudo apt install git -y
+
+	Install Maven - Build Tool :
+	https://maven.apache.org/install.html
+
+	sudo apt install maven -y 
+
+
+Create User in Jenkins Slave Machine & Create SSH Keys 
+
+	SSH Keys --> is composed of public and private keys 
+
+
+#Add User : 
+
+#useradd -m -d /home/devopsadmin devopsadmin
+#useradd devopsadmin
+
+useradd devopsadmin -s /bin/bash -m -d /home/devopsadmin
+
+su - devopsadmin
+
+#ssh-keygen
+
+#for Ubuntu ::
+ssh-keygen -t rsa -b 4096 -m PEM
+
+
+ls ~/.ssh 
+
+#You should see following two files:
+
+#id_rsa - private key
+#id_rsa.pub - public
+
+
+cat id_rsa.pub > authorized_keys
+
+chown -R devopsadmin /home/devopsadmin/.ssh
+chmod 600 /home/devopsadmin/.ssh/authorized_keys
+chmod 700 /home/devopsadmin/.ssh
+
+
+
+
+https://github.com/LoksaiETA/Java-mvn-app2.git ---> 
+
+
+pipeline {
+	agent { label 'mvnbuildserver1' }
+
+    tools {
+        maven "maven"
+    }
+
+	stages {
+		stage('SCM Checkout') {
+			steps {
+				echo 'SCM CHECKOUT'
+				git 'https://github.com/LoksaiETA/Java-mvn-app2.git'
+
+			}
+		}
+		stage('Java App Build') {
+			steps {
+				echo 'Perform Maven Build'
+				sh 'mvn -Dmaven.test.failure.ignore=true clean package'
+			}
+		}
+		stage('Deploy to QA Server') {
+			steps {
+				echo 'Deploy to QA'
+				echo 'Hello Everyone'
+			}
+		}
+	}
+}
+
+
+
