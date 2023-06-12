@@ -317,4 +317,222 @@ pipeline {
 }
 
 
+###############
+Day 10
+9th June 2023
+###############	
+
+
+			Jenkins_Master 
+				Slave - Java webappln. Build --> Artifacts.
+				
+			Target Server / Hosted Servers 	VM / Computing Device.
+			
+				QA	VM --> Application Server - tomcat / nginx 
+				
+				UAT VM --> Application Server - tomcat / nginx 
+				
+				PROD VM --> Application Server - tomcat / nginx 
+				
+				
+			Jenkins_Master 
+				Slave - Java webappln. Build --> Artifacts.
+			
+			Launch Test_Server : (VM)
+				Install jdk / Tomcat Application Server 	-	runs in port 8080
+
+	Install Java ::
+
+	sudo apt update -y 
+	sudo apt install openjdk-11-jre -y
+	java -version
+	
+	
+	/usr/lib/jvm/java-11-openjdk-amd64
+	
+	Create Environment Variable :;
+	
+export JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64"
+PATH=$PATH:$HOME/bin:$JAVA_HOME/bin
+
+source /etc/profile
+
+######################Install TOMCAT Application Server on Ubuntu :::
+
+sudo apt update
+sudo apt install openjdk-11-jre -y 
+java -version
+
+#edit /etc/profile & add JAVA_HOME
+
+#/usr/lib/jvm/java-11-openjdk-amd64/
+
+vi /etc/profile
+
+/usr/lib/jvm/java-11-openjdk-amd64
+
+export JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64"
+PATH=$PATH:$HOME/bin:$JAVA_HOME/bin
+
+source /etc/profile
+
+Install Tomcat ::
+
+cd /opt
+wget https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.88/bin/apache-tomcat-8.5.88.tar.gz
+tar -xvzf /opt/apache-tomcat-8.5.88.tar.gz
+
+mv apache-tomcat-8.5.88 tomcat
+
+#Start Tomcat Server:
+#Goto:
+
+cd /opt/tomcat/bin
+./startup.sh
+
+
+###########################################333
+
+				Create User 
+				Create SSH key in tomcat server 
+				
+				
+			Deployment means??
+			
+			
+			Source Path	: target/mvn-hello-world.war
+			
+			Destination Path : /opt/tomcat/webapps/mvn-hello-world.war
+												/opt/tomcat/webapps/target/mvn-hello-world.war
+				
+				
+			In Jenkins :
+				Install Publish Over SSH Plugins 
+						got to manage Jenkins -> Plugin Manager -> 
+						Available tab -> search for Publish over SSH Plugin
+										Restart jenkins upon installation. 
+				
+				
+					Add Tomcat Server to Jenkins Master with valid private key of tomcat user
+				
+sshPublisher(publishers: [sshPublisherDesc(configName: 'TomcatServer', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '.', remoteDirectorySDF: false, removePrefix: 'target/', sourceFiles: 'target/mvn-hello-world.war')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+
+
+
+pipeline {
+	agent { label 'mvnbuildserver1' }
+
+    tools {
+        maven "maven"
+    }
+
+	stages {
+		stage('SCM Checkout') {
+			steps {
+				echo 'SCM CHECKOUT'
+				git 'https://github.com/LoksaiETA/Java-mvn-app2.git'
+
+			}
+		}
+		stage('Java App Build') {
+			steps {
+				echo 'Perform Maven Build'
+				sh 'mvn -Dmaven.test.failure.ignore=true clean package'
+			}
+              post {
+                success {
+                  sh "echo 'Send mail on success'"
+				  mail bcc: '', body: '"Please go to ${BUILD_URL} and verify the build"', cc: 'loksaieta223@gmail.com', from: '', replyTo: '', subject: 'Build Notification', to: 'loksaieta223@gmail.com'
+                }
+                failure {
+                  sh "echo 'Send mail on failure'"
+				  mail bcc: '', body: '"Please go to ${BUILD_URL} and verify the build"', cc: 'loksaieta223@gmail.com', from: '', replyTo: '', subject: 'Build Notification', to: 'loksaieta223@gmail.com'
+                }
+              }
+		}
+
+        stage('Approve - deploy to QA'){
+            steps{
+                
+                //----------------send an approval prompt-------------
+                script {
+                   env.APPROVED_DEPLOY = input message: 'User input required Choose "yes" | "Abort"'
+                       }
+                //-----------------end approval prompt------------
+            }
+        }	
+	
+		stage('Deploy to QA Server') {
+			steps {
+				echo 'Deploy to QA'
+				echo 'Hello Everyone'				
+				script {
+				sshPublisher(publishers: [sshPublisherDesc(configName: 'TomcatServer', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '.', remoteDirectorySDF: false, removePrefix: 'target/', sourceFiles: 'target/mvn-hello-world.war')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+				}
+			}
+		}
+	}
+}
+
+
+
+
+	Jenkins Scheduling :::
+	
+		Build periodic 	-->	
+				Used to trigger the job based upon schedule. eg. every min.
+		
+			dev servers , test servers, Prod servers (24/7)
+			8am - 10pm 
+			
+		Poll SCM 
+		
+				Used to trigger the job for eg. every 15 mins only if there is any changes happened in src code repo.
+				
+				repo1 --> dev team -- commit --> 
+					Test window -- 8,12,4
+					
+				8 - 12 
+				
+				everyday 11am 3pm ==> do a deployment to qa envi.
+		
+		
+		Github Webhook 
+				Create github webhook payload url in github.
+				
+				Enter Jenkins Master URL. eg.:
+				http://<public-IP>:8080/github-webhook/
+			
+				http://15.206.127.38:8080/github-webhook/
+				
+				for each commit, the pipeline will get triggered. 
+				
+		Notification ::::
+			-- 
+		Email - Notification Plugins ::::
+		
+Email Notification Plugins :::
+
+SMTP Server :
+smtp.gmail.com
+SMTP Authentication
+SMTP Port :: 465
+Login to Gmail :::
+Click Account Settings
+Security 
+Create App Token --- 16 
+
+
+Summary :::
+
+		Jenkins _ Master & Slave 
+			Install Jenkins 
+			Plugins 
+			Manage Jenkins Option 
+			Master and slave node config 
+			adding eternal server to jenkins using SSH 
+			create cicd pipeline 
+			
+
+
 
