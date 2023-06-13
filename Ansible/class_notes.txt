@@ -1,0 +1,199 @@
+
+
+###############
+Day 11
+12th June 2023
+###############
+
+		Configuration Management Tool - Ansible :::
+		
+		Servers are to be provision and configured Dynamically
+		
+		VM -AWS --> 
+		
+		Infra Team 
+			: Server Provisioning
+			: Configuration
+			
+		Using shell / in-house script to do such automation 
+		Manually.
+		
+		Micro-Services :::
+		
+		Static Servers/Environment 
+		
+		DEV 
+		QA 
+		INT
+		Stage 
+		PROD 
+		
+		
+		IAC - Tool -- Infra-Structure As Code .
+		
+			Server Provisioning/Creating 	--> Terraform
+			CMS								--> Ansible 
+			
+		
+		Ansible :
+		
+			- Architecture
+			- Installation & Config.
+			- Components of Ansible Architecture
+			- Playbooks/
+			- Roles
+			
+		Jenkins_master 
+			Slave1,2,3,4,5,6
+			
+			- Architecture		
+			
+		Ansible :: 	Uses Push Mechanism 
+					Agentless 
+					Used SSH connection between Ansible controller and Nodes.
+					
+		Ansible Components :::
+			Inventory
+			Ansible.config 
+			Modules 
+			Playbook 
+				-- Script written using yaml. to exectute the modules/task in target machines.
+			
+		- Installation and Configuration of Ansible Controller and Nodes :::
+		
+		Jenkins_Master				Slave :::(created ssh keys in slave. shared the private of slave to master)
+		
+		
+		CMS ::
+		
+			Ansible Controller 
+								Dev :
+									Ansible_Node1 - created ssh keys in slave. shared the private of slave to master
+									Ansible_Node2
+								Test :
+									Ansible_Node1
+									Ansible_Node2		
+						
+		
+		public key.
+		
+		ssh key => public & private 
+		
+		
+		Working with Ansible :::
+		
+			Inventory --> is used maintain the details of the target server
+					hosts ==> is a default inventory file.
+					
+		
+			Working with Ansible Modules
+				Using : 	
+						Adhoc Commands 
+						Playbooks 
+						
+	
+	
+		deployment ????
+			
+	Ansible_Controller 		
+		Slave1 
+		QA 		
+		
+		copy 
+		fetch 
+		
+###############
+Day 12
+13th June 2023
+###############		
+		
+			Ansible Playbooks with variables ::
+			
+				Environment Variables 
+					
+				User Defined Variables 
+				
+				Handling User defined Variables :::
+				
+					- Declare directly in playbooks using vars key
+					- Handling varibles thru external variable files using vars_files Key
+					- Using -e and passing as run time arguments to playbook.
+		
+		
+			register and setup ::::
+			
+			
+			debug --> used to print some message in target/console
+			
+			shell --> it used execute a shell command in target 
+		
+	
+	Ansible Roles ::::
+	
+		- are used to organize the ansible components to reuse and share.
+		
+		
+	Global Community for ansible galaxy :::
+	
+
+	Ansible :::
+		
+			Architecture :
+				Components --> AC,Inventory,anisible.config, playbook
+				SHH 
+			Modules using adhoc commands, playbook 
+			variable 
+			handlers
+			Roles 
+	
+	Inventory ==> 
+		Static / Dynamic 
+			script to create dynamic inventory files :::
+				python script to 
+			
+	Next Modules ::
+	
+		Intro. Containerization ::: using Docker.
+		
+		Deployments :::
+		
+		Server 
+		
+		Environments 
+		
+		
+		Virtual Machines !!!!
+																			1 cpu / 16 gb ram				
+			- Hardware level virtualization:::
+			
+			Hypervisor -- used to create VMs 
+							Oracle VirtualBox 
+			
+			- Consume more time to bootup
+			- Consume more space to save the OS
+			- Slower in excuting the application 
+			- It will hold the resource even if there is no application is up an running.
+							
+		Containerization !!!!
+		
+			- OS level virtualization:::
+
+				Container Engine ==> c1,2,3,4 
+				
+				Container are used to run the application NOT operating system.
+	
+			- Containers can start quickly
+			- faster in excuting the application 
+			- It will release the resource if there is no application is up an running.		
+		
+			- Using Containers we can Reduce the no. of VMs.
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
