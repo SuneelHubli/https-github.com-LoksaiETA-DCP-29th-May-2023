@@ -121,6 +121,170 @@ Day 13
 			start 
 			
 			
+###############
+Day 14
+15th June 2023
+###############				
+	
+			Create Docker Image
+			Publish the images to Dockerhub 
+			Persistant Docker Volume
+			Docker Compose 
+			Docker Swarm & Kubernetes
+			Kubernetes Architecture
 			
+		Create Docker Image
+		
+				- docker commit command
+
+						centos image ==> install git,maven,jdk == container
+				
+					centos --> incremental changes in the image --> Layers
+					
+					docker commit <commit_id> <image_name>
+				
+				- docker build command 
+				
+					Dockerfile
+					
+				[root@ip-172-31-14-213 mydockercontents]# cat Dockerfile
+				FROM debian
+				RUN apt-get update
+				RUN apt-get install git -y
+				
+					docker build -t <image_name> .
+					
+		Publish the images to Dockerhub :::
+
+			login to dockerhub using docker cli
+				login_id
+				Access Token 							dckr_pat_vRIH__SNp_O5uBv4_JTJOxGccG8
+					Create Access token in dockerhub
+				docker login -u loksaieta
+				
+			push the image.
+			
+					
+		Persistant Docker Volume	
+			
+			Stateless Application 		
+			
+			Stateful Application 	--> Application Logs/Reports/or anyfile - json/yaml
+			
+			Micro-Service based application ::
+			
+				E_Commerce App :
+				
+					user_Registration_Service ==> 3-tier architecture -> frontend,Appln.logic,Database
+					
+				docker Compose == is used to run multiple containers as a single service .
+				
+				Preserve the data that is generated inside the container
+				
+					Docker volume. 
+				
+				
+				Ensure the application is up and running without any downtime, even it we lose the container.
+				Container Orchestration Tools 
+						docker swarm 
+						Kubernetes 
+			
+				docker volume == command 
+				
+				docker run -it centos
+				
+				docker run -it centos bash / sleep 20
+				
+				docker run -it --mount source=dcp29vol1,destination=/dcp29vol1 centos bash
+				
+				
+		Container Orchestration :::				
+				
+				Artifacts --> slave1 --> *.war --> copy to container --> 
+				COPY 
+				CP -- 
+				ADD 
+				EXPOSE 
+				CMD 
+				FROM 
+				
+				ENTRYPOINT 				
+				
+				FROM tomcat
+				COPY ./*.war /usr/lib/tomcat/webapps 
+				EXPOSE 8080
+				CMD "bash"				# which can be replace at runtime 
+
+				
+				FROM tomcat
+				COPY ./*.war /usr/lib/tomcat/webapps 
+				EXPOSE 8080
+				ENTRYPOINT "sleep"	# these are the default and constant. which cannot tbe replace at runtime.	
+				CMD "20"
+		
+		
+		Container Orchestration :::	
+		
+				Containers ::::
+					Service 			---> c1,2,3		10 replicas of containers
+					
+				docker swarm ==> 
+				
+					Create the replicas of Container. to ensure high availability.
+					Scale up / down  scale to 50 
+					
+				The Container Orchestration tool is used to ensure high availability of applications running inside the container. to ensure zero downtime. 
+				
+			Kubernetes Architecture :::
+			
+			DevOps CICD -- process ???
+			
+				- SCM Checkout 
+				- Build - appln. build to create artifacts 	*.war_SNAPSHOT_V1.0 *.war_SNAPSHOT_V1.0
+				- Docker Build -- create docker image 	*.war_SNAPSHOT_V1.0 		-- mywebapp:v1.0, mywebapp:v1.1
+				- publish to docker hub.
+				
+				Kubernetes will be used to pull that image from docker hub and deploy it target environment.
+					Update --> 
+					
+			
+			Kubernetes Architecture ::::
+			
+			Kubernetes Components ::::
+			
+			Kubernetes Service ::::
+			
+			Kubernetes 
+					
+					
+			Kubernetes Master :
+			
+				Kubernetes_Cluser1
+					Kubernetes WorkerNode1
+					Kubernetes WorkerNode2
+					Kubernetes WorkerNode3
+					
+				Kubernetes_Cluser2
+					Kubernetes WorkerNode1
+					Kubernetes WorkerNode2
+					Kubernetes WorkerNode3
+										
+			Installation and Configuration of Kubernetes :
+			
+				Open-Source Kubernetes 
+				
+					kubeadm ==>> 
+					
+				Managed Services :::
+				
+					AWS 		EKS 
+					Azure 		AKS 
+					GCP 		GKS 
+			
+			
+			
+			
+			
+					
 			
 			
