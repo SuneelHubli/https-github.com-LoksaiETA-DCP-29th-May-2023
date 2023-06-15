@@ -142,3 +142,126 @@ docker stop $(docker ps -q)
 docker kill $(docker ps -aq)
 
 
+
+
+###Build Docker Image :::
+
+Dockerfile 
+
+###Using commit: 
+
+	docker run -it debian
+
+	ls
+
+	git
+
+	apt-get update && apt-get install -y git 
+
+	clear
+
+	git 
+
+	docker ps -a 
+
+	docker commit <container_id> loksaieta/deb-git:v1.0
+	
+	docker commit 03ab32a36f71 loksaieta/mar13-git:v1.0
+	
+
+	docker images
+
+	docker run -it loksaieta/mar13-git:v1.0
+	
+	###Login to Container:
+	docker exec -it <container_name-wizardly_shannon> bash
+	
+###Using Docker file:
+
+mkdir docker-contents
+cd docker-contents
+
+vi Dockerfile
+
+FROM debian
+RUN apt-get update
+RUN apt-get install -y git
+RUN apt-get install -y vim
+
+### Best Practice:
+
+FROM debian
+RUN apt-get update && apt-get install -y \
+	git \
+	vim
+
+###
+sudo usermod -aG docker devopsadmin
+###save this Dockerfile
+
+docker build -t loksaieta/mar13-git-vim .
+
+docker images
+
+#Dockerfile 
+
+
+FROM tomcat:8.0
+WORKDIR /home/devopsadmin
+COPY ./mvn-hello-world.war /usr/local/tomcat/webapps
+
+docker build -t loksaieta/javawebapp1 .
+docker build -t loksaieta/javamvnwebapp1 .
+
+
+docker run -it -p 8585:8080 loksaieta/mvnjavawebapp1
+
+docker run -it -p 8080:8080 loksaieta/javamvnwebapp1
+
+#QA Environment ---> OS, appln, appln server, mysql, Testing tool, Monitoring tools 
+
+#docker-compose.yaml 
+
+#While running multiple containers ----> we shd establish links between the containers... for data trans
+ 
+#### Docker Push images to Docker Registry:
+
+docker images
+
+docker tag <image_id> loksaieta/debian-git1:1.0
+
+docker tag 33e83a2fdb90 loksaieta/debian-git2:v1.0
+
+docker images 
+
+## Push to docker registry
+
+docker login --username=loksaieta
+
+password: dckr_pat_lu71vhQjN0UvzxvxzcvxzcvxzcvxcvYt7wadfsdfsdcsdcsdfpwfpsdf8
+
+#docker push loksaieta/deb-git-vim:latest
+
+docker push loksaieta/mvnjavawebapp1
+
+#docker push loksaieta/debian-git:v1.0
+
+##Docker File
+
+###Storage
+### Volumes:
+
+docker run centos sleep 30
+
+docker volume list
+
+docker volume create v1 
+
+docker volume inspect v1
+
+docker run -it --name=testvol1 --mount source=v1,destination=/v1 bash 
+
+docker run -it --mount source=mar13v1,destination=/mar13v1 centos bash
+
+stateless & Stateful Appln.
+
