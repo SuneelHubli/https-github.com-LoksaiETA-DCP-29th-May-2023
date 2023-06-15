@@ -1,0 +1,126 @@
+
+###############
+Day 13
+14th June 2023
+###############			
+		
+		
+			Containerization ::::
+			
+			Infra-Structure Perspective ::::
+			
+				Jenkins_Master 
+					Slave1 		--> Java
+					Slave2		--> Python
+					Slave3 		--> NodeJS 
+					Slave4 		--> Angular 
+					
+			
+			Containerization 	:
+			
+				
+				Jenkins_Master	VM 
+					Slave1 		VM 
+						Install Container Engine
+							Container1	--> Java
+							Container2	--> Python
+							Container3	--> NodeJS 
+				
+			Development/Deployments 
+		
+				Dev_Environment --> Java web appln.
+						jdk, maven -- to build 			signin.war
+						jdk1.8, Tomcat8.5 appln. server ---> successfully test the appln.
+						
+							Package the Appln. Artifacts along with its dependencies.
+								--> (sigin.war,jdk1.8,Tomcat8.5) --> Package_ID1 -- Image.
+								--> Package will be stored in a dedicated repo.								
+				
+				Test :
+					QA 			jdk1.7, Tomcat8.0 ==> signin.war	--->  Package_ID1(sigin.war,jdk1.8,Tomcat8.5)
+					UAT 
+					
+				Rel:
+					Prod 
+		
+				Containers ==> are called as executable units 
+				Images are static file - package of appln.
+				
+				
+				
+				
+			Docker Container Engine ::
+				
+				
+			-	Developer's Create the Application artifacts :::
+			- 	Create the Docker Images using Dockerfile 
+			- 	Publish thd Docker Images to Dockerhub
+			
+			- 	Pull the Images from Docker hub and deploy it in target servers as container.
+			
+			
+			
+			Docker Terminologies ::::
+			
+				Docker Engine/Daemon
+				Image 
+				Container 		- are Instance of Image.
+				Registry
+					Create dockerhub account.
+					
+				Repository
+				
+			Installation of Docker Engine ::
+			
+				Linux/Windows/Mac
+				
+			Working with Docker CLI Commands ::::
+			
+			docker --version 
+			docker pull <image_name>
+			
+			
+			docker by default runs in foreground mode 
+			
+			Modes of Container execution ::
+			
+				foreground / attached mode 
+					docker run centos sleep 5
+				background / detached mode 
+					docker run -d centos sleep 5
+				Interactive Mode 
+					docker run -it centos
+					
+				docker exec -it <container_id> bash
+				
+			Container Port Mapping / Port Binding ::::
+			
+			
+				tomcat ==> appln. server used to run webapps -- 8080
+				
+				
+			tomcat ==> 
+				
+				
+				host port and container port 
+			
+			
+			
+			<external_ip>:8080
+			
+			host_Machine == port 8085 : container 8080
+			
+			docker run -it -p 8585:8080 tomcat:8.0
+			
+			Steps to install tomcat in VM ??
+			
+			OS
+			jdk
+			envi 
+			install tomcat 
+			start 
+			
+			
+			
+			
+			
