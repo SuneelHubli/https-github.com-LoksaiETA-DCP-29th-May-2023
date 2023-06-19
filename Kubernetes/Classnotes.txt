@@ -114,7 +114,104 @@ Day 15
 		
 		Secrets	 	--> are used to send sensitive data to pod  
 		
+	
 			
+###############
+Day 16
+19th June 2023
+###############		
+		
+		Deployment Controller 
+		
+			- replicasets 
+			- Scale up/down 
+			- Rolling Update 
+			- Roleback/Undo the Changes 
+		
+		
+		*.war -==> image --> mywebapp:v1.1 --> publish --> deploy to kubernetes 
+		*.war -==> image --> mywebapp:v1.2 --> publish --> deploy to kubernetes 
+		*.war -==> image --> mywebapp:v1.3 --> publish --> deploy to kubernetes 
+		
+		
+		Describe Command ======> is used to get the list of events of any kubernetes object.
+		
+		Deployment StrategyType:           RollingUpdate
+		
+		nginx-deploy  upgrade to --> 1.9.1
+		
+nginx-deploy-5878ddd45b-5ts9s   1/1     Running   0          119s			--	nginx:1.7.9			upgrade to --> 1.9.1
+nginx-deploy-5878ddd45b-lntml   1/1     Running   0          119s			--	nginx:1.7.9			upgrade to --> 1.9.1
+nginx-deploy-5878ddd45b-tncpk   1/1     Running   0          119s			--	nginx:1.7.9			upgrade to --> 1.9.1
+
+		
+nginx-deploy-5878ddd45b-5ts9s   1/1     Running   0          119s			--	nginx:1.7.9			upgrade to --> 1.9.1
+nginx-deploy-5878ddd45b-lntml   1/1     Running   0          119s			--	nginx:1.7.9			upgrade to --> 1.9.1
+
+	kubectl create -f mypod.yaml
+	kubectl apply -f mypod.yaml
+	
+			Services :::::
+			
+				NodePort 
+				ClusterIP
+				Load Balancer
+	
+	
+
+		Service --> User_Login_Service ::::	==> 3-tier Application 
+		
+			FrontEnd(UI)				Container1(Pod1)
+			Application_Logic			Container2(Pod2)
+			BackEnd(DBase)				Container3(Pod3)		cluserIP Service 
+		
+		
+		
+		Workflow ::
+		
+		FrontEnd(UI) - Container1(Pod1)
+		
+		Create Service to this Pod --> NodePort Service (31000)
+		
+			Label ans selector 
+		
+		Use External_IP:<node_port> ==> access the application 
+		
+		
+		
+		192.168.10.1		==> External_IP Address ---> Host Machine 
+		
+		Host Name Mapping thru internet access.
+		
+		pod1	-- ips		Service (Created with a valid Name. --_ Port --_ IP_Address)	- selector-(lbl1)-(lbl2)
+		pod2	-- ips(lbl1)
+		pod2	-- ips(lbl2)
+		
+		
+		Label and Selectors 
+		
+		
+		Volumes ::::
+		
+			ConfigMaps
+			Secrets 
+			
+			Hostpath				---> compare with docker volume (dir)
+			empty dir 				---> Default volume
+			
+			PV 		Persistant Volume 				use to handle huge volume of data- 1TB of Volume
+			PVC 	Persistant Volume Claim 
+		
+		
+		apply		------->>>>> pod 
+		
+		/update/apply 
+		
+		
+	
+		
+		
+					
 		
 		
 		
