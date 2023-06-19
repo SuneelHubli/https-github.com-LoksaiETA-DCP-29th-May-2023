@@ -1,0 +1,122 @@
+			
+			Kubernetes Architecture ::::
+			
+			Kubernetes Components ::::
+			
+			Kubernetes Service ::::
+			
+			Kubernetes 
+					
+					
+			Kubernetes Master :
+			
+				Kubernetes_Cluser1
+					Kubernetes WorkerNode1
+					Kubernetes WorkerNode2
+					Kubernetes WorkerNode3
+					
+				Kubernetes_Cluser2
+					Kubernetes WorkerNode1
+					Kubernetes WorkerNode2
+					Kubernetes WorkerNode3
+										
+			Installation and Configuration of Kubernetes :
+			
+				Open-Source Kubernetes 
+				
+					kubeadm ==>> 
+					
+				Managed Services :::
+				
+					AWS 		EKS 
+					Azure 		AKS 
+					GCP 		GKS 
+			
+			
+###############
+Day 15
+16th June 2023
+###############		
+
+
+		Installation and config. of Kubernetes.
+		
+			kubectl		- cli  
+			
+			pods		- Smallest unit to task schedul	
+			
+			
+		Using Kubeadm - we can install and config kubernetes master and cluster.	
+			
+			
+		Pre-Requisites :::
+		
+			1. 2 or more CPUs
+			2. 3GB or more RAM
+			3. Full network access among the nodes.
+			4. Enable SWAPOFF 
+			5. Disable Selinux
+			
+		
+		Kubernetes Concepts ::::
+		
+			kubectl 			- Command Line Utility.
+			pods 
+			Controller Objects 
+				Replication Controller 
+				Replicasets
+				Deployment Controller 
+				Daemonset
+			Services
+				NodePort 
+				ClusterIP
+				Load Balancer
+			Persistant Volumes
+			Persistant Volume Claim
+			HELM - Package Manager 
+			
+			
+		Pod -- created ===> one copy of pod, running in one WN.
+			
+				Replication Controller 
+				Replicasets			
+			
+					- Are used to create replicas of Pods. 
+					- Scale up / down 
+					
+					Labels & Selectors == are used to identify the template.
+					
+					
+		Both Replication Controller and Replicasets 
+					- Both RC / RS are used to run a specific no. of pods in the cluster.
+					- Are used to create replicas of Pods. 
+					- Scale up / down 
+					- RC uses Equality based operator 	app=nginx-app => envi=dev
+					- RS used set based operator 		{envi:[dev,qa,uat]}
+					- Scale Up / Down
+					- kubectl scale rc nginx-rc --replicas=5
+					- kubectl scale rs nginx-rs --replicas=5
+					
+		
+					
+			
+			
+		Daemonset	:::
+
+					- Is used to run a copy of pod in all the available/set of workernodes
+					- Automatically create the pod in all the new nodes.
+					
+				wn1,2,3,4,5
+				
+				Monitoring tool -> 
+					
+		ConfigMaps 	--> are used to send some non-sensitive data to pod 
+		
+		Secrets	 	--> are used to send sensitive data to pod  
+		
+			
+		
+		
+		
+		
+		
