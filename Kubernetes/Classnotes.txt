@@ -209,6 +209,30 @@ nginx-deploy-5878ddd45b-lntml   1/1     Running   0          119s			--	nginx:1.7
 		
 		
 	
+			
+###############
+Day 17
+20th June 2023
+###############	 
+		
+		HELM - Package Manager ::::
+		
+		Package Manager :::: -- like yum, apt, rpm, dnf 
+		
+		Monitoring tool ==> K8s Cluster --> worknodes
+		
+		HELM
+		
+		Use HELM Package Manager to install a package for K8s Cluster.
+		
+		Kubernetes Dashboards 
+		
+		EKS/AKS/GKS ==> Dashboards 
+		kubectl -- CLU ==> GUI --> 
+		
+		https://helm.sh/docs/helm/helm_package/
+		
+	
 		
 		
 					
