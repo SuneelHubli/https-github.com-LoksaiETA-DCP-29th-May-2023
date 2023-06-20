@@ -1,0 +1,73 @@
+
+	Continous Monitoring!!!!
+	
+	Fundamentals of Prometheus and Grafana.
+	
+	DevOps 
+	
+	Continous Develop ---> Deployment 
+	
+	Monitoring ::
+	
+		Infra-Structure Monitoring 
+		
+			CPU/Memory/Traffic ==> 	Prometheus/Spluk/Nagios/Dynatrace  ==> Monitoring
+									Grafana	==> Visualization Tool
+		
+		Application Monitoring 
+		
+			Application Performance ==> Dynatrace
+		
+		
+	Fundamentals of Prometheus and Grafana.
+
+			Prod Support 
+			Prod Monitoring Team
+		
+		100s of servers --> Monitoring tool and it agents 
+		Ansible ==> 
+		Jenkins ==> ---> get into that slave machine & cleanup the workspace folders. 
+			Schedule it to run once in 3 days.
+			
+		Architecture of Prometheus ::::
+		
+		
+		
+		Jenkins_SLave1 ===> memory ==> 
+		
+			Components of Prometheus
+			
+				Data Retrival Components		Storage Components			HTTP Request				====>		Grafana
+													(Time series DB)		PromQL
+		
+		
+		
+		How to install and config Prometheus/Grafana :
+		
+			Launch an Instance :::
+				Prometheus/Grafana
+				
+				
+				
+		Dev 
+		Test 
+		
+		
+		Dev_envi		VM 
+		QA 
+		UAT 
+		
+		
+				
+		cluster 
+		
+			wn1,2,3,4,5,6
+
+		
+		Namespace ==> Logical partitioning of Cluster 
+		dev 
+		uat
+		
+		
+Next :: 
+		Terraform - IAC Tool
