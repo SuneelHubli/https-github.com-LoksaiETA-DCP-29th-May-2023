@@ -1,0 +1,85 @@
+		
+###############
+Day 19
+22nd June 2023
+###############	 
+
+		Infra-Structure Provisioning/configuration ::	
+				Use Terraform and launch the required VMs
+				Ansible to Configure the servers
+					Ansible_Controller
+
+
+#jenkins_install.sh 
+
+sudo apt update -y
+sudo apt install openjdk-11-jre -y
+java -version
+curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key | sudo tee \
+  /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
+  https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
+sudo apt-get update
+sudo apt-get install jenkins				
+
+#jenkins_slave_install.sh 
+
+sudo apt update -y
+sudo apt install openjdk-11-jre -y
+java -version
+sudo apt install maven -y
+
+
+
+		CI/CD :::
+	
+		Jenkins_Master			---> To create Jenkins CI/CD Pipeline and Schedule the build  	--> jdk,git,jenkins 
+		(Build_Server)Slave1	---> Perform Actual Application Build & Docker Build			--> jdk,maven,git,docker
+			
+		KMaster					---> Deploy the Applications
+			KNode1
+			KNode2
+			
+			
+	Infra-Structure
+	
+	Development 		
+	
+	build & Deployment 
+	
+	
+Workflow ::::
+
+	Developers --> Commit the src code in github repo.
+	
+CI/CD ::::
+
+	-	SCM-Checkout 
+	-	Application Build 	==> Create *.war 			---> Testing (UT)
+	-	Docker Build 		==>	Create Docker Image 	---> Testing (UT)
+	
+	-	Publish to Docker Registry 
+	
+	- 	Deploy to Kubernetes_Cluster		--> (Multiple Environments in the form on Namespaces)
+			(Deployment Controllers & NodePort Service is used to deploy the application)
+			
+DevOps ---> 
+
+GitOps ===>  Argo CD -->
+
+Testing ::::
+
+	UT / QA / UAT / PROD ====> 
+
+loksaieta
+dckr_pat_ooXFVdNQgidF_M0vOFK0Kz9rZhU
+
+
+to deploy a pod -- Manifest file *.yaml 
+	
+
+
+	ansible node1 -m shell -a "docker build -t loksaieta/loksai-eta-app:${BUILD_NUMBER} ."	
+	
+	ansible node1 -m shell -a "docker run -it loksaieta/loksai-eta-app"
