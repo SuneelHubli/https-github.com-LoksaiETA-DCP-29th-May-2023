@@ -1,0 +1,92 @@
+		
+###############
+Day 18
+21th June 2023
+###############	 
+
+		IAC -- Terraform 
+		
+		What is Server Provision ???? VM 
+			Static / Dynamic 
+		
+		Infra-Structure Team ==> responsible to provision and config the servers.
+		
+		In-house automation -- Shell Scripts.
+		
+		IAC Tool ---> Code/Script - simple, easy to code and manage the scripts.
+		
+		IAC tool ---> Terraform --> HCL -- based on json file format -- key-value pairs
+		
+		
+		Terraform Workflow :::
+		
+			-	Scope - is used to Identify the Infra Structure 				AWS 
+			-	Create/Write the Config file - for Resource Definition			
+			-	Terraform Init 	--> Used to download and install Providers in local Machine/workspace 
+			-	Terraform Plan 	--> Is used to validate the Config file - for Resource Definition
+			-	Terraform Apply --> Is used to actually Implement the Changes. 
+			
+			
+		Installation of Terraform :::
+		
+			https://developer.hashicorp.com/terraform/downloads
+			
+		Install Terraform in Windows Machine -->
+		
+		Choose Windows tab --> Download AMD64 for Terraform 
+		
+			Extract the zip file and get --> terraform.exe 
+			Set/Update Environment PATH Variable 
+			
+		How to create Terraform scripts :::
+		
+			Visual Studio Code -
+			https://code.visualstudio.com/download
+			
+		goto cmd prompt : terraform --version 
+		
+		Visual Studio Code IDE to create terraform config file for resource definition :::
+		
+		Open Visual Studio Code IDE
+		Goto Extension tab - search for terraform and install HashiCorp Terraform extension for Visual Studio Code IDE
+
+			Using Terrafrom we can :::
+			
+				Create/Add  		=====> 		+
+				Update/Change		=====> 		~
+				Delete/Destroy		=====>		-
+				
+Scenarios ::::
+
+	Dev Cycle ::::
+	
+	dev,test, 
+		
+	Release Cycle :::
+		
+	Adhoc / hotfix 	===> Dynamically Provision the servers	
+	
+	
+CICD Pipeline ::::
+
+SCM-Checkout	--	Build	-- Deploy to QA 
+
+
+Case 1:::
+
+pipeline1 :
+	provision QA_Server(Using Terraform)		----> Configure QA_Server(Using Ansible)
+	
+pipeline2 :
+	SCM-Checkout	--	Build	-- Deploy to QA 
+	
+Case 2:::
+
+pipeline :
+
+	SCM-Checkout	--	Build	-- provision QA_Server(Using Terraform)	----> Configure QA_Server(Using Ansible) ---> Deploy to QA 	
+	
+dev1 --> src code ==> payment.war_SNAPSHOT_V1.0
+	 --> src code ==> payment.war_SNAPSHOT_V1.1
+	 
+	 
